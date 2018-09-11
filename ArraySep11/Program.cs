@@ -62,15 +62,16 @@ namespace ArraySep11
         public static int[] MySort(int[] arr)
         {
             var na = new int[arr.Length];
+            var nextIndex = arr.Length - 1;
             
             for (int i = 0; i < arr.Length; ++i)
             {
                 na[i] = arr[i];
             }
 
-            for (int k = 0; k < arr.Length - 1; ++k)
+            for (int k = 0; k < nextIndex; ++k)
             {
-                for (int i = 0; i < arr.Length - 1; ++i)
+                for (int i = 0; i < nextIndex; ++i)
                 {
                     SortSwap(na, i);
                 }
@@ -79,19 +80,17 @@ namespace ArraySep11
             return na;
         }
 
-        public static bool SortSwap(int[] na, int x)
+        public static void SortSwap(int[] na, int i)
         {
-            bool swapped = false;
-            if (na[x] > na[x + 1])
+            var next = i + 1;
+
+            if (na[i] > na[next])
             {
-                var tmp     = na[x];
-                na[x]       = na[x + 1];
-                na[x + 1]   = tmp;
+                var tmp     = na[i];
 
-                swapped = true;
+                na[i]       = na[next];
+                na[next]    = tmp;
             }
-
-            return swapped;
         }
     }
 }
